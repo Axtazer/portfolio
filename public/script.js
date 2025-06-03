@@ -44,7 +44,12 @@ function renderTimeline(data) {
 
 // Chargement principal
 fetch(FILE_URL)
-  .then(res => res.text())
+  .then(res => {
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+    return res.text();
+  })
   .then(data => decryptYAML(data, KEY_HEX))
   .then(text => jsyaml.load(text))
   .then(data => renderTimeline(data))
