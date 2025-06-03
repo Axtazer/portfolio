@@ -9,6 +9,8 @@ on:
 
 jobs:
   encrypt-and-deploy:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     env:
