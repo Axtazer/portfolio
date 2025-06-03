@@ -1,0 +1,40 @@
+name: Encrypt YAML and Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/parcours.yaml'
+
+jobs:
+  encrypt-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      YAML_ENCRYPT_KEY: ${{ secrets.YAML_ENCRYPT_KEY }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install js-yaml
+
+      - name: Run encryption script
+        run: |
+          node .github/scripts/encrypt.js
+
+      - name: Commit encrypted file
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add public/parcours.enc
+          git commit -m "🔐 Mise à jour du fichier chiffré"
+          git push

@@ -1,0 +1,42 @@
+experiences:
+  - titre: PFMP - Maintenance Informatique
+    entreprise: US Robotic Distribution
+    date: 03/06/2024 - 21/06/2024
+    description: Installation de postes, maintenance informatique et gestion de parc.
+
+  - titre: PFMP - Découverte Microsoft et Bureautique
+    entreprise: US Robotic Distribution
+    date: 13/01/2025 - 07/02/2025
+    description: Approfondissement sur les services Microsoft et la maintenance bureautique.
+
+  - titre: Stage d'observation
+    entreprise: RTE CNER - STH Avignon
+    date: 13/12/2021 - 17/12/2021
+    description: "Découverte de plusieurs métiers : drones, secrétariat, logistique, etc."
+
+etudes:
+  - nom: BAC Pro CIEL
+    etablissement: Lycée La Salle Avignon
+    date: 2023 - 2026
+    description: Cybersécurité, informatique, réseau, électronique, cours CISCO/ANSII.
+
+  - nom: Seconde Générale et Technologique
+    etablissement: Lycée Alphonse Benoît
+    date: 2022 - 2023
+
+  - nom: Brevet des collèges (mention)
+    etablissement: Collège du Pays des Sorgues
+    date: Juillet 2022
+
+certifications:
+  - nom: Certification Pix
+    date: Mai 2022
+    lien: https://app.pix.fr/verification-certificat
+    code: P-J227BTH2
+
+langues:
+  - nom: Français
+    niveau: Natif
+
+  - nom: Anglais
+    niveau: Intermédiaire (B1 estimé)
