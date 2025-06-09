@@ -9,6 +9,8 @@ on:
 
 jobs:
   encrypt-and-deploy:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     env:
@@ -31,10 +33,20 @@ jobs:
         run: |
           node .github/scripts/encrypt.js
 
-      - name: Commit encrypted file
+      - name: Inject secret key into script
+        run: sed -i "s|<CLÉ_HEX_A_REMPLACER>|$YAML_ENCRYPT_KEY|" public/script.js
+        env:
+          YAML_ENCRYPT_KEY: ${{ secrets.YAML_ENCRYPT_KEY }}
+
+      - name: Commit encrypted file and script
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add public/parcours.enc
+          git add public/parcours.enc public/script.js
           git commit -m "🔐 Mise à jour du fichier chiffré"
           git push
+
+      - name: Reset key placeholder
+        run: sed -i "s|$YAML_ENCRYPT_KEY|<CLÉ_HEX_A_REMPLACER>|" public/script.js
+        env:
+          YAML_ENCRYPT_KEY: ${{ secrets.YAML_ENCRYPT_KEY }}
